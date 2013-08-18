@@ -32,6 +32,10 @@ var _ = require('lodash')
         parts.push('LIMIT ' + parseInt(query.lim, 10))
     }
 
+    if (query.offs) {
+        parts.push('OFFSET ' + parseInt(query.offs, 10))
+    }
+
     query.text = parts.join('\n')
 
     Object.keys(query.params).forEach(function(n) {
@@ -48,6 +52,7 @@ var _ = require('lodash')
     query.from = query.f = from.bind(query)
     query.select = query.s = select.bind(query)
     query.limit = query.l = limit.bind(query)
+    query.offset = query.skip = offset.bind(query)
 
     return query
 }
@@ -70,6 +75,11 @@ function order(expr, dir) {
 
 function limit(n) {
     this.lim = n
+    return build(this)
+}
+
+function offset(n) {
+    this.offs = n
     return build(this)
 }
 
