@@ -29,11 +29,11 @@ var _ = require('lodash')
     }
 
     if (query.lim) {
-        parts.push('LIMIT ' + parseInt(query.lim, 10))
+        parts.push('LIMIT ' + query.lim)
     }
 
     if (query.offs) {
-        parts.push('OFFSET ' + parseInt(query.offs, 10))
+        parts.push('OFFSET ' + query.offs)
     }
 
     query.text = parts.join('\n')
