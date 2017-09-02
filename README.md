@@ -36,4 +36,4 @@ LIMIT 500
 */
 ```
 
-See tests for more
+See tests for more.
